@@ -1,3 +1,6 @@
+let computerPoints = 0;
+let playerPoints = 0;
+
 let randomNumber = Math.floor(Math.random()*10);
 
 function getComputerChoice(randomNumber){
@@ -6,10 +9,10 @@ function getComputerChoice(randomNumber){
         return "rock"
     }
     else if (randomNumber < 3 ){
-        return "paper"
+        return "scissors"
     }
     else {
-        return "scissors"
+        return "paper"
     }
 }
 
@@ -30,6 +33,7 @@ function lossLogic(cs , ps){
 function playRound (ps , cs){
 
     if ( lossLogic(cs, ps )){
+        computerPoints++
         return `You lose! ${cs} beats ${ps}`
     }
 
@@ -37,9 +41,11 @@ function playRound (ps , cs){
         return `Its a draw`
     }
     else {
+        playerPoints++
         return `You win ! ${ps} beats ${cs}`
     }
 }
 
 console.log(playRound(ps,cs));
-
+console.log(`You : ${playerPoints}`);
+console.log(`Computer : ${computerPoints}`);
