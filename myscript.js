@@ -18,11 +18,6 @@ function getComputerChoice(randomNumber){
 
 cs = getComputerChoice(randomNumber);
 
-
-playerSelection = prompt("Please input your selection").toLowerCase();
-ps = playerSelection;
-
-
 function lossLogic(cs , ps){
     if (( cs === "rock" && ps === "scissors") || (cs === "scissors" && ps === "paper") || (cs === "paper" && ps === "rock")){
     return true
@@ -46,6 +41,16 @@ function playRound (ps , cs){
     }
 }
 
-console.log(playRound(ps,cs));
-console.log(`You : ${playerPoints}`);
-console.log(`Computer : ${computerPoints}`);
+const contianer =  document.querySelector('div');
+const div = document.createElement('div');
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button)=>
+button.addEventListener('click',(e)=>{
+    ps = e.target.className;
+    play = playRound(ps , cs);
+}
+
+))
+
