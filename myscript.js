@@ -9,6 +9,16 @@ let computerScoreDiv = document.querySelector('a.computerScore')
 
 let resultDiv = document.querySelector('a.result')
 
+let container = document.querySelector('div.container')
+
+let playerDiv = document.querySelector('div.playerDiv')
+let computerDiv = document.querySelector('div.computerDiv')
+
+let textResultDiv = document.querySelector('div.text');
+let gameResultDiv = document.querySelector('.gameResult');
+
+let reloadDiv = document.querySelector('a.reload');
+let pDiv = document.querySelectorAll('p');
 
 function lossLogic(cs , ps){
     if (( cs === "rock" && ps === "scissors") || (cs === "scissors" && ps === "paper") || (cs === "paper" && ps === "rock")){
@@ -72,12 +82,20 @@ function playerChoice(event){
         return;
     }
     else if ( playerScore === 5){
-        yourScoreDiv.textContent = `${playerScore}`;
-        resultDiv.textContent =`Bravo! You crushed the Game.. ;)`;
+        container.removeChild(playerDiv);
+        container.removeChild(computerDiv);
+        container.removeChild(textResultDiv);
+
+        gameResultDiv.textContent =`Bravo! You crushed the Game.. ;)`;
+        reloadDiv.textContent = `Start a new Match?`
     }
     else if ( computerScore === 5){
-        computerScoreDiv.textContent = `${computerScore}`;
-        resultDiv.textContent =`Oh.. oh Computer Wins!`;
+        container.removeChild(playerDiv);
+        container.removeChild(computerDiv);
+        container.removeChild(textResultDiv);
+
+        gameResultDiv.textContent =`Oh.. oh Computer Wins!`;
+        reloadDiv.textContent = `Start a new Match?`
     }
 
 
