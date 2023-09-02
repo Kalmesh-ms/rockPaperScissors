@@ -1,72 +1,64 @@
-let computerPoints = 0;
-let playerPoints = 0;
+let playerScore = 0;
+let computerScore = 0;
+let yourScoreDiv = document.querySelector('a.playerScore');
+let computerScoreDiv = document.querySelector('a.computerScore')
+let resultDiv = document.querySelector('p.result')
 
 
-
-
-const container =  document.querySelector('div');
-
-const eachPlayText = document.createElement('div');
-eachPlayText.classList.add('play')
-
-const computerScore = document.createElement('div');
-computerScore.classList.add('cscore');
-
-const playerScore = document.createElement('div');
-playerScore.classList.add('pscore');
-
-const buttons = document.querySelectorAll('button');
-
-function listen(e){
-    ps = e.target.className;
-        
-    let randomNumber = Math.floor(Math.random()*10);
-
-            function getComputerChoice(randomNumber){
-                
-                if (randomNumber > 6){
-                    return "rock"
-                }
-                else if (randomNumber < 3 ){
-                    return "scissors"
-                }
-                else {
-                    return "paper"
-                }
-            }
-
-    cs = getComputerChoice(randomNumber);
-
-            function lossLogic(cs , ps){
-                if (( cs === "rock" && ps === "scissors") || (cs === "scissors" && ps === "paper") || (cs === "paper" && ps === "rock")){
-                return true
-                }
-                else {return false}
-            }
-        
-            playRound = function (ps , cs){
-            
-                if ( lossLogic(cs, ps )){
-                    computerPoints++
-                    return `You lose! ${cs} beats ${ps}`
-                }
-            
-                else if (ps === cs ){
-                    return `Its a draw`
-                }
-                else {
-                    playerPoints++
-                    return `You win ! ${ps} beats ${cs}`
-                }
-            }
-    eachPlayText.textContent = playRound(ps,cs);
-    playerScore.textContent =`You : ${playerPoints}`;
-    computerScore.textContent = `Computer : ${computerPoints}`;
+function lossLogic(cs , ps){
+    if (( cs === "rock" && ps === "scissors") || (cs === "scissors" && ps === "paper") || (cs === "paper" && ps === "rock")){
+    return true
+    }
+    else {return false}
 }
 
-buttons.forEach((button)=>
-button.addEventListener('click' , listen))
+function playRound (cs , ps){
 
-container.appendChild(eachPlayText);
-container.appendChild(playerScore);
-container.appendChild(computerScore);
+    if ( lossLogic(cs, ps )){
+        computerScore++
+        return `You lose! ${cs} beats ${ps}`
+    }
+
+    else if (ps === cs ){
+        return `Its a draw`
+    }
+    else {
+        playerScore++
+        return `You win ! ${ps} beats ${cs}`
+    }
+}
+
+//ComputerChoice
+
+let playerSelection;
+function playerChoice(event){
+    playerSelection = event.target.className;
+        randomNumber = Math.floor(Math.random()*3);
+        function computerChoice(randomNumber){
+            if(randomNumber === 0){
+                return 'rock';
+            }
+            else if (randomNumber === 1){
+                return 'paper';
+            }
+            else if(randomNumber === 2){
+                return 'scissors';
+            }
+}
+    computerSelection = computerChoice(randomNumber);
+    
+    result = playRound(computerSelection, playerSelection)
+    console.log(`You : ${playerSelection}`);
+    console.log(`Computer : ${computerSelection}`);
+    console.log(result);
+
+    //Display of Scores
+    yourScoreDiv.textContent = `${playerScore}`;
+    computerScoreDiv.textContent = `${computerScore}`;
+    resultDiv.textContent =`${result}`;
+
+}
+const buttons = document.querySelectorAll('.playerDiv button')
+buttons.forEach((button)=> button.addEventListener('click', playerChoice))
+
+
