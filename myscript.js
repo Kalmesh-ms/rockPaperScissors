@@ -1,8 +1,13 @@
 let playerScore = 0;
 let computerScore = 0;
+
+let yourSelectionDiv = document.querySelector('a.playerSelection')
 let yourScoreDiv = document.querySelector('a.playerScore');
+
+let computerSelectionDiv = document.querySelector('a.computerSelection')
 let computerScoreDiv = document.querySelector('a.computerScore')
-let resultDiv = document.querySelector('p.result')
+
+let resultDiv = document.querySelector('a.result')
 
 
 function lossLogic(cs , ps){
@@ -32,6 +37,7 @@ function playRound (cs , ps){
 
 let playerSelection;
 function playerChoice(event){
+
     playerSelection = event.target.className;
         randomNumber = Math.floor(Math.random()*3);
         function computerChoice(randomNumber){
@@ -47,17 +53,36 @@ function playerChoice(event){
 }
     computerSelection = computerChoice(randomNumber);
     
-    result = playRound(computerSelection, playerSelection)
+    result = playRound(computerSelection, playerSelection);
+    if ( playerScore < 5 && computerScore < 5 ){
     console.log(`You : ${playerSelection}`);
     console.log(`Computer : ${computerSelection}`);
     console.log(result);
 
-    //Display of Scores
+    //Display of textContent
+    yourSelectionDiv.textContent =`${playerSelection}`;
     yourScoreDiv.textContent = `${playerScore}`;
+
+    computerSelectionDiv.textContent =`${computerSelection}`;
     computerScoreDiv.textContent = `${computerScore}`;
+
     resultDiv.textContent =`${result}`;
+    }
+    else if ( playerScore > 5 || computerScore > 5){
+        return;
+    }
+    else if ( playerScore === 5){
+        yourScoreDiv.textContent = `${playerScore}`;
+        resultDiv.textContent =`Bravo! You crushed the Game.. ;)`;
+    }
+    else if ( computerScore === 5){
+        computerScoreDiv.textContent = `${computerScore}`;
+        resultDiv.textContent =`Oh.. oh Computer Wins!`;
+    }
+
 
 }
+
 const buttons = document.querySelectorAll('.playerDiv button')
 buttons.forEach((button)=> button.addEventListener('click', playerChoice))
 
