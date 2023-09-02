@@ -86,7 +86,7 @@ function playerChoice(event){
         container.removeChild(computerDiv);
         container.removeChild(textResultDiv);
 
-        gameResultDiv.textContent =`Bravo! You crushed the Game.. ;)`;
+        gameResultDiv.textContent =`Damn! You crushed the Game.. ;)`;
         reloadDiv.textContent = `Start a new Match?`
     }
     else if ( computerScore === 5){
@@ -94,7 +94,7 @@ function playerChoice(event){
         container.removeChild(computerDiv);
         container.removeChild(textResultDiv);
 
-        gameResultDiv.textContent =`Oh.. oh Computer Wins!`;
+        gameResultDiv.textContent =`Shit! Computer Wins!`;
         reloadDiv.textContent = `Start a new Match?`
     }
 

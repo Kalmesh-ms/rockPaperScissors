@@ -3,30 +3,37 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <link rel="stylesheet" href="style.css">
         <title>Classic Game</title>
     </head>
 
     <body>
         <div class="container">
-            <h2>First to 5...  Wins!</h2>
+            <h2>First to 5 <a style="color:red ; font-weight:900">>></a>  Wins!</h2>
 
             <div class="playerDiv">
+                <p>Choose your Weapon!</p>
+                <div>You : <a class="playerSelection"></a></div>
+                <p></p>
                 <button class="rock">Rock</button>
                 <button class="paper">Paper</button>
                 <button class="scissors">Scissors</button>
-                    <div>You : <a class="playerSelection"></a></div>
+                <p></p>
                     <div>Your Score : <a class="playerScore"></a></div>
 
             </div>
 
+            <p></p>
             <p> --------------------------------</p>
+            <p></p>
 
             <div class="computerDiv">
+                <div>Computer : <a class="computerSelection"></a></div>
+                <p></p>
                 <button class="rock">Rock</button>
                 <button class="paper">Paper</button>
                 <button class="scissors">Scissors</button>
-                    <div>Computer : <a class="computerSelection"></a></div>
+                <p></p>
                     <div>Computer Score: <a class="computerScore"></a></div>
             </div>
 
@@ -38,7 +45,7 @@
 
             <h2 class="gameResult"></h2>
 
-            <a class="reload" href="index.html"></a>
+            <button class="reloadBtn"><a class="reload" href="index.html"></a></button>
         </div>
         <script src = "myscript.js">
         </script>

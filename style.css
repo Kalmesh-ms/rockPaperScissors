@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+    color:white;
+    width: 300px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.reload{
+    color: white;
+    text-decoration: None;
+}
+
+button.reloadBtn{
+
+    background-color: black;
+}
